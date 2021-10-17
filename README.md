@@ -17,7 +17,7 @@ module.exports = {
     mode: 'production',
     plugins: [
         new webpackAssetsSizeLimitPlugin({
-            limit: 10,
+            maxAssetSize: 10,
             include: (assetName) => {
                 return assetName.endsWith('js')
             }

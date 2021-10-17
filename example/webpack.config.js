@@ -4,7 +4,8 @@ module.exports = {
     mode: 'production',
     plugins: [
         new webpackAssetsSizeLimitPlugin({
-            maxAssetSize: 1
+            include: ['js'],
+            maxAssetSize: 1,
         })
     ]
 };

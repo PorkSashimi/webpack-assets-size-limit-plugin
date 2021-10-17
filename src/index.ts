@@ -6,8 +6,8 @@ const PLUGIN_NAME = 'WebpackAssetsSizeLimitPlugin';
 // ------ ------ ------ ------ ------ ------ ------ ------
 
 export type TWebpackChunkSizeLimitPluginConfig = {
+    include?: string[];
     maxAssetSize?: number;
-    include?: (assetName?: string) => boolean;
 };
 
 // ------ ------ ------ ------ ------ ------ ------ ------
@@ -17,12 +17,13 @@ class WebpackChunkSizeLimitPlugin {
     config!: TWebpackChunkSizeLimitPluginConfig;
 
     constructor(config: TWebpackChunkSizeLimitPluginConfig) {
-        this.config = { include: () => true, ...config };
+        this.config = config;
     }
 
     apply(compiler: Compiler) {
+        const { include, maxAssetSize } = this.config;
         compiler.hooks.afterEmit.tap(PLUGIN_NAME, (compilation) => {
-            if (!this.config.maxAssetSize) {
+            if (!include || !maxAssetSize) {
                 return;
             }
             let exceededAssets = [];
@@ -31,8 +32,8 @@ class WebpackChunkSizeLimitPlugin {
             for (let index = 0; index < fileNames.length; index++) {
                 let assetName = fileNames[index];
                 let assetSize = assets[assetName].size();
-                if (this.config.include?.(assetName)) {
-                    if (assetSize > this.config.maxAssetSize) {
+                if (include.some(subfix => assetName.endsWith(subfix))) {
+                    if (assetSize > maxAssetSize) {
                         exceededAssets.push({ assetName, assetSize });
                     }
                 }
@@ -42,7 +43,7 @@ class WebpackChunkSizeLimitPlugin {
                     chalk.red(
                         `\n Error in ${PLUGIN_NAME}` +
                         `\n - exceeded bundle count: ${exceededAssets.length}` +
-                        `\n - expected bundle size: ${this.config.maxAssetSize} B` +
+                        `\n - expected bundle size: ${maxAssetSize} B` +
                         exceededAssets.map((asset, index) => {
                             return `\n   ${index + 1}. ${asset.assetName}: ${asset.assetSize} B`;
                         })
@@ -54,7 +55,7 @@ class WebpackChunkSizeLimitPlugin {
                     chalk.green(
                         `\n Success in ${PLUGIN_NAME}` +
                         `\n - exceeded bundle count: ${exceededAssets.length}` +
-                        `\n - expected bundle size: ${this.config.maxAssetSize} B`
+                        `\n - expected bundle size: ${maxAssetSize} B`
                     )
                 )
             }
