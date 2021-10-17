@@ -6,8 +6,8 @@ const PLUGIN_NAME = 'WebpackAssetsSizeLimitPlugin';
 // ------ ------ ------ ------ ------ ------ ------ ------
 
 export type TWebpackChunkSizeLimitPluginConfig = {
-    include?: string[];
-    maxAssetSize?: number;
+    include: string[];
+    maxAssetSize: number;
 };
 
 // ------ ------ ------ ------ ------ ------ ------ ------
