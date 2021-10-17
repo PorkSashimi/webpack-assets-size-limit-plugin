@@ -6,6 +6,7 @@
   "typings": "lib/index.d.ts",
   "author": "TravisChenn",
   "license": "MIT",
+  "keywords": ["assets size limit", "webpack plugin"],
   "scripts": {
     "build": "tsc -p tsconfig.json --declaration",
     "release:major": "npm version major && git push --tags orgin master"
