@@ -2,5 +2,12 @@
   "name": "example",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^5.58.2",
+    "webpack-cli": "^4.9.0"
+  },
+  "scripts": {
+    "build": "webpack"
+  }
 }
