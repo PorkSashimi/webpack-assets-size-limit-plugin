@@ -1,7 +1,7 @@
 {
   "name": "webpack-assets-size-limit-plugin",
   "description": "used to check whether the size of the asset output by webpack complier meets the expected value",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "TravisChenn",
