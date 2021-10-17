@@ -11,8 +11,7 @@
     "webpack plugin"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.json --declaration",
-    "release:major": "npm version major && git push --tags orgin master"
+    "build": "tsc -p tsconfig.json --declaration"
   },
   "dependencies": {
     "chalk": "^4.1.2"

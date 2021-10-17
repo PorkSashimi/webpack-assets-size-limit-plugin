@@ -1,5 +1,9 @@
 src
+example
 node_modules
+
 .gitignore
-tsconfig.json
+.npmignore
+
 yarn.lock
+tsconfig.json
