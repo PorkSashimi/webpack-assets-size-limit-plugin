@@ -1,7 +1,8 @@
 {
   "name": "webpack-assets-size-limit-plugin",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "author": "TravisChenn",
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json"
@@ -13,5 +14,9 @@
     "@types/node": "^16.11.0",
     "typescript": "^4.4.4",
     "webpack": "^5.58.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TravisChenn1996/webpack-assets-size-limit-plugin"
   }
 }
