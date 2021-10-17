@@ -17,11 +17,26 @@ module.exports = {
     mode: 'production',
     plugins: [
         new webpackAssetsSizeLimitPlugin({
-            limit: 53,
+            limit: 10,
             include: (assetName) => {
                 return assetName.endsWith('js')
             }
         })
     ]
 };
+```
+
+Then run webpack:
+
+```
+yarn webpack
+```
+
+If the client bundle is larger than 10 kilobytes, then you'll get an error message like this:
+
+```
+ Error in WebpackAssetsSizeLimitPlugin
+ - exceeded bundle count: 1
+ - expected bundle size: 1 B
+   1. main.js: 54 B
 ```
