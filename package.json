@@ -1,12 +1,15 @@
 {
   "name": "webpack-assets-size-limit-plugin",
   "description": "used to check whether the size of the asset output by webpack complier meets the expected value",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "TravisChenn",
   "license": "MIT",
-  "keywords": ["assets size limit", "webpack plugin"],
+  "keywords": [
+    "assets size limit",
+    "webpack plugin"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json --declaration",
     "release:major": "npm version major && git push --tags orgin master"
