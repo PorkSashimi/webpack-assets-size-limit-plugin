@@ -18,9 +18,7 @@ module.exports = {
     plugins: [
         new webpackAssetsSizeLimitPlugin({
             maxAssetSize: 10,
-            include: (assetName) => {
-                return assetName.endsWith('js')
-            }
+            include: ['.js', '.css']
         })
     ]
 };
